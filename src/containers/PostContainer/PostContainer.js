@@ -20,10 +20,41 @@ class PostContainer extends Component {
     }
 
     fetchPostInfo = async (postId) => {
-        const post = await service.getPost(postId);
-        console.log(post);
-        const comments = await service.getComments(postId);
-        console.log(comments);
+        // 요청이 시작하기 전에 fetch 값을 true 로 설정합니다.
+        // 요청이 끝난다음엔 false 로 설정하고, postId 값도 설정해줍니다.
+        this.setState({
+            fetching: true // requesting..
+        });
+
+        // wait for two promises
+        const info = await Promise.all([
+            service.getPost(postId),
+            service.getComments(postId)
+        ]);
+
+
+        // const post = await service.getPost(postId);
+        // console.log(post);
+        // const comments = await service.getComments(postId);
+        // console.log(comments);
+        // Object destructuring Syntax,
+        // takes out required values and create references to them
+
+        // const { a, b } = c 의 형식의 코드는 ES6 의 Object Destructuring (객체 비구조화 할당)문법입니다.
+        // 필요한 값을 객체에서 꺼내서, 그 값을 가지고 레퍼런스를 만들어주죠.
+        const {title, body} = info[0].data;
+        const comments = info[1].data;
+
+        this.setState({
+            postId,
+            post: {
+                title,
+                body
+            },
+            comments,
+            fetching: false // done!
+        });
+
     }
 
     componentDidMount() {
