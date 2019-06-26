@@ -62,10 +62,20 @@ class PostContainer extends Component {
     }
 
     render() {
+        // 이 코드에서도, state 부분에 비구조화 할당 문법을 사용했습니다. 이렇게 함으로 서,
+        // this.state.post.title 이렇게 해야되는거를 바로 post.title 로 할 수 있으니까 훨씬 보기 편하지 않나요?
+        const {postId, fetching, post, comments} = this.state;
         return (
             <PostWrapper>
-                <Navigator/>
-                <Post/>
+                <Navigator
+                    postId={postId}
+                    disabled={fetching}
+                />
+                <Post
+                    title={post.title}
+                    body={post.body}
+                    comments={comments}
+                />
             </PostWrapper>
         );
     }
