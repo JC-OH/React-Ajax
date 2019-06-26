@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from 'semantic-ui-react';
 import './Navigator.css';
 
-
+// 포스트를 앞 뒤로 넘기는 Navigate 컴포넌트를 만들어봅시다.
 const Navigator = () => (
     <div className="Navigate">
     <Button
