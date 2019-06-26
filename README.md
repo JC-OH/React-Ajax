@@ -4,6 +4,7 @@
 ```angular2
 $ npm install --save axios
 $ npm install --save semantic-ui-react semantic-ui-css
+$ npm install --save promise-polyfill
 ```
 
 # Manual

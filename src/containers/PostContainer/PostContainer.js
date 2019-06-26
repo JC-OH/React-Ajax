@@ -15,7 +15,8 @@ class PostContainer extends Component {
                 title: null,
                 body: null
             },
-            comments: []
+            comments: [],
+            warningVisibility: false
         };
     }
 
@@ -61,9 +62,26 @@ class PostContainer extends Component {
             this.setState({
                 fetching: false
             });
-            console.error('error occurred', e);
+            //console.error('error occurred', e);
+            this.showWarning();
         }
 
+    }
+    showWarning = () => {
+
+        this.setState({
+            warningVisibility: true
+        });
+
+        // after 1.5 sec
+
+        setTimeout(
+            () => {
+                this.setState({
+                    warningVisibility: false
+                });
+            }, 1500
+        );
     }
 
     handleNavigateClick = (type) => {
@@ -83,7 +101,7 @@ class PostContainer extends Component {
     render() {
         // 이 코드에서도, state 부분에 비구조화 할당 문법을 사용했습니다. 이렇게 함으로 서,
         // this.state.post.title 이렇게 해야되는거를 바로 post.title 로 할 수 있으니까 훨씬 보기 편하지 않나요?
-        const {postId, fetching, post, comments} = this.state;
+        const {postId, fetching, post, comments, warningVisibility} = this.state;
         return (
             <PostWrapper>
                 <Navigator
@@ -92,11 +110,12 @@ class PostContainer extends Component {
                     onClick={this.handleNavigateClick}
                 />
                 <Post
+                    postId={postId}
                     title={post.title}
                     body={post.body}
                     comments={comments}
                 />
-                <Warning message="That post does not exist"/>
+                <Warning visible={warningVisibility} message="That post does not exist"/>
             </PostWrapper>
         );
     }
