@@ -5,6 +5,19 @@ import * as service from '../../services/post';
 
 // 함수형 컴포넌트가 아닌 클래스 형식으로 컴포넌트를 선언했습니다. 그 이유는 나중에 여기에 state 를 추가할것이기 때문이죠!
 class PostContainer extends Component {
+    constructor(props) {
+        super(props);
+        // initializes component state
+        this.state = {
+            postId: 1,
+            fetching: false, // tells whether the request is waiting for response or not
+            post: {
+                title: null,
+                body: null
+            },
+            comments: []
+        };
+    }
 
     fetchPostInfo = async (postId) => {
         const post = await service.getPost(postId);
