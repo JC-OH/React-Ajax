@@ -6,3 +6,5 @@ const Header = () => (
         POSTS
     </div>
 )
+
+export default Header;
