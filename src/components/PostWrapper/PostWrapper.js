@@ -7,7 +7,7 @@ import './PostWrapper.css';
 const PostWrapper = ({children}) => {
     return (
         <div className="PostWrapper">
-        {children}
+            {children}
         </div>)
 }
 
