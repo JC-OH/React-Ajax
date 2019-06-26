@@ -13,6 +13,10 @@ class PostContainer extends Component {
         console.log(comments);
     }
 
+    componentDidMount() {
+        this.fetchPostInfo(1)
+    }
+
     render() {
         return (
             <PostWrapper>
