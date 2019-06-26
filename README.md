@@ -1,3 +1,12 @@
+# Reference
+
+## Dependencies
+```angular2
+$ npm install --save axios
+$ npm install --save semantic-ui-react semantic-ui-css
+```
+
+# Manual
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
