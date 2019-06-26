@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { PostWrapper, Navigator, Post } from '../../components';
+import { PostWrapper, Navigator, Post, Warning } from '../../components';
 //import { PostWrapper } from 'components/'
 import * as service from '../../services/post';
 
@@ -96,6 +96,7 @@ class PostContainer extends Component {
                     body={post.body}
                     comments={comments}
                 />
+                <Warning message="That post does not exist"/>
             </PostWrapper>
         );
     }
